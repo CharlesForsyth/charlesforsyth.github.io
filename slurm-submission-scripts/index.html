@@ -138,11 +138,11 @@ last=$(( $nnodes - 1 ))
 
 cd $SLURM_WORKING_DIR
 
-export SPARK_HOME=/rhome/jhayes/shared/pkgs/spark/2.4.0-bin-hadoop2.7
+export SPARK_HOME=/rhome/forsythc/bigdata/bin/spark
 ssh ${nodes[0]}.ib.int.bioinfo.ucr.edu &quot;module load java/8u45; cd ${SPARK_HOME}; ./sbin/start-master.sh&quot;
 sparkmaster=&quot;spark://${nodes[0]}:7077&quot;
 
-SCRATCH=~/bigdata/Projects/spark/
+SCRATCH=/rhome/forsythc/bigdata/scratch/
 mkdir -p ${SCRATCH}/work
 rm -f ${SCRATCH}/work/nohup*.out
 
