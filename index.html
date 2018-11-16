@@ -4,14 +4,14 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
         
         
-        
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Slurm Examples - Charles Forsyth</title>
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Charles Forsyth</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/docco.min.css">
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -19,13 +19,13 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
-    <body>
+    <body class="homepage">
 
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
@@ -39,34 +39,30 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="..">Charles Forsyth</a>
+                    <a class="navbar-brand" href=".">Charles Forsyth</a>
                 </div>
 
                 <!-- Expanded navigation -->
                 <div class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
+                            <li class="active">
+                                <a href=".">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">High Performance Computing <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../hpc-aws/">HPC on AWS</a>
+    <a href="hpc-aws/">HPC on AWS</a>
 </li>
                                     
 <li >
-    <a href="../Code/">Code</a>
+    <a href="Code/">Code</a>
 </li>
                                     
 <li >
-    <a href="../presentations/">Presentations</a>
-</li>
-                                    
-<li class="active">
-    <a href="./">Slurm Examples</a>
+    <a href="presentations/">Presentations</a>
 </li>
                                 </ul>
                             </li>
@@ -75,11 +71,11 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../project1/">Project 1</a>
+    <a href="project1/">Project 1</a>
 </li>
                                     
 <li >
-    <a href="../project2/">Project 2</a>
+    <a href="project2/">Project 2</a>
 </li>
                                 </ul>
                             </li>
@@ -91,13 +87,13 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../presentations/">
+                            <li class="disabled">
+                                <a rel="next" >
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../project1/">
+                                <a rel="prev" href="hpc-aws/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -109,71 +105,86 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#slurm">Slurm</a></li>
-            <li><a href="#spark-example">Spark Example</a></li>
+        <li class="main active"><a href="#chuck-forsyth">Chuck Forsyth</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="slurm">Slurm</h1>
-<p>Slurm is a resource scheduler for HPC Clusters.</p>
-<p>Slurm submission scripts are how you ask for resources on the cluster and what todo with teh those resources once you get them.</p>
-<p>I have a collection of different examples I have used on github.
-<a href="https://github.com/CharlesForsyth/slurm_scripts">Link</a></p>
-<h2 id="spark-example">Spark Example</h2>
-<pre><code class="bash">#!/bin/bash -l
-
-#SBATCH -p short
-#SBATCH --nodes=3
-#SBATCH --cpus-per-task=8
-#SBATCH --ntasks-per-node=1
-#SBATCH --time=0:20:00
-#SBATCH --job-name=spark-test
-
-##########################################################
-# PBS version was pulled from here:                      #
-#   https://www.dursi.ca/post/spark-in-hpc-clusters.html #
-##########################################################
-
-nodes=($( scontrol show hostnames $SLURM_NODELIST ))
-nnodes=${#nodes[@]}
-last=$(( $nnodes - 1 ))
-
-cd $SLURM_WORKING_DIR
-
-export SPARK_HOME=/rhome/forsythc/bigdata/bin/spark
-ssh ${nodes[0]}.ib.int.bioinfo.ucr.edu &quot;module load java/8u45; cd ${SPARK_HOME}; ./sbin/start-master.sh&quot;
-sparkmaster=&quot;spark://${nodes[0]}:7077&quot;
-
-SCRATCH=/rhome/forsythc/bigdata/scratch/
-mkdir -p ${SCRATCH}/work
-rm -f ${SCRATCH}/work/nohup*.out
-
-for i in $( seq 0 $last ); do
-        ssh ${nodes[$i]}.ib.int.bioinfo.ucr.edu &quot;cd ${SPARK_HOME}; module load java/8u45; nohup ./bin/spark-class org.apache.spark.deploy.worker.Worker ${sparkmaster} &amp;&gt; ${SCRATCH}/work/nohup-${nodes[$i]}.out&quot; &amp;
-done
-
-rm -rf ${SCRATCH}/wordcounts
-
-cat &gt; sparkscript.py &lt;&lt;EOF
-from pyspark import SparkContext
-
-sc = SparkContext(appName=&quot;wordCount&quot;)
-file = sc.textFile(&quot;${SCRATCH}/moby-dick.txt&quot;)
-counts = file.flatMap(lambda line: line.split(&quot; &quot;)).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a+b)
-counts.saveAsTextFile(&quot;${SCRATCH}/wordcounts&quot;)
-EOF
-
-module load java/8u45
-${SPARK_HOME}/bin/spark-submit --master ${sparkmaster} sparkscript.py
-
-echo &quot;Tried to use host name ${nnodes[0]} maybe we should use ${nodes[0]}&quot;
-ssh ${nodes[0]}.ib.int.bioinfo.ucr.edu &quot;module load java/8u45; cd ${SPARK_HOME}; ./sbin/stop-master.sh&quot;
-for i in $( seq 0 $last ); do
-    ssh ${nodes[$i]}.ib.int.bioinfo.ucr.edu &quot;killall java&quot;
-    done
-wait
-</code></pre></div>
+<h1 id="chuck-forsyth">Chuck Forsyth</h1>
+<p>Lead HPC Administrator with experience in architecting, installing, administering and supporting large scale HPC Infrastructures for RD&amp;E operations and Academic Institutions. (Larger Linux Clusters, Thousands of Cores, Lustre, SAN and NAS Storage, Network Licensing and Software support)</p>
+<h2 id="experience">Experience</h2>
+<h4 id="linuxhpc-system-administrator">Linux/HPC System Administrator</h4>
+<h5 id="university-of-california-riverside">University of California, Riverside</h5>
+<p><em>Jun 2017 - Present</em></p>
+<ul>
+<li>Architect, install, administer and support campus HPC Systems.</li>
+<li>Enable researchers and students by providing training classes and seminars.</li>
+<li>XSEDE Campus Champion, consulting and enabling researchers and students on how to access NSF backed supercomputing centers and national laboratories.</li>
+<li>UCR Representative for the University of California Research IT Committee; serving to align Research IT and HPC goals across all nine UC Campuses and the UC Office of the President.</li>
+<li>Designed and administering functional on-demand HPC Clusters in AWS.</li>
+</ul>
+<h4 id="linuxhpc-system-administrator_1">Linux/HPC System Administrator</h4>
+<h5 id="corning-incorporated">Corning Incorporated</h5>
+<p><em>Jan 2012 - Jun 2017    5 yrs 6 mos</em></p>
+<p>Direct experience administering the following:</p>
+<ul>
+<li>Provisioning and configuration management (ILo, cobbler, iPXE, Kickstarts)</li>
+<li>Monitoring and alerting (Nagios, ELK stack)</li>
+<li>Storage systems (HP MSA SAN, Lustre, Isilon NAS)</li>
+<li>Networking (Infiniband, 10GB and 1GB Ethernet, 16GB FC)</li>
+<li>VM infrastructure (VMWare, Citrix XenServer, Ovirt KVM)</li>
+<li>Operating systems (CentOS Linux 4-&gt;7, Windows XP-&gt;Server 2012R2)</li>
+<li>Programing/Scripting (c++,c#, Python,Bash,Powershell)</li>
+<li>Remote desktop software (VNC, RDP, X11,NiceDCV)</li>
+<li>Source control (GIT)</li>
+<li>Databases (MySQL,MS SQL)</li>
+<li>Server software (SSH, Cgroups, Apache and all other major applications)</li>
+<li>Cloud services (OpenStack, AWS)</li>
+<li>Project management (Lead both internal and external projects.)</li>
+<li>Hardware service contracts (400+ Server, Storage and Networking support contracts)</li>
+<li>Server room power and cooling systems (150kVA+ APC UPS, large LieBert AC units)</li>
+<li>Cluster software (All major Scientific Modeling package (e.g. Ansys, Comsol, Abaqus))</li>
+<li>Cluster software (Parallel Libraries such as Intel MPI and OpenMPI)</li>
+<li>Cluster software (Mathematical libraries such as MKL and FFTW)</li>
+<li>License management (FlexLM, RLM, LMX,MathLM supporting 60+ network licensed software packages)</li>
+<li>Customer training and documentation development</li>
+</ul>
+<h2 id="education">Education</h2>
+<h4 id="kaplan-university"><strong>Kaplan University</strong></h4>
+<h5 id="bachelor-of-science-bs-information-technology-2013-2015-389"><em><strong>Bachelor of Science (BS), Information Technology</strong> 2013-2015   3.89</em></h5>
+<ul>
+<li>Iota Sigma Tau Honor Society</li>
+<li>Golden Key International Honor Society</li>
+<li>Alpha Beta Kappa National Honor Society</li>
+</ul>
+<h4 id="ridley-lowell-business-technical-institute"><strong>Ridley-Lowell Business &amp; Technical Institute</strong></h4>
+<h5 id="networking-and-technical-support-specialist-2010-2011-40"><em><strong>Networking and Technical Support Specialist</strong>  2010-2011   4.0</em></h5>
+<p>The program provides necessary training to support end users and computer operations in business environments with skills such as computer and peripherals maintenance, networking, computer operating systems, computer hardware, and software applications.</p>
+<ul>
+<li>
+<p>Qualified certification equal to CompTia A+ , Microsoft Certified Systems Engineer (MCSE), Networking +, Security +, and Linux +</p>
+</li>
+<li>
+<p>Dean's List, 4.0 Average , Top GPA of class</p>
+</li>
+</ul>
+<h4 id="united-states-navy"><strong>United States Navy</strong></h4>
+<h5 id="advanced-electronics-technologytechnician-1994-1997"><em><strong>Advanced Electronics Technology/Technician</strong>   1994-1997</em></h5>
+<ul>
+<li>AC Circuits</li>
+<li>Basic Electronics Laboratory</li>
+<li>DC Circuits</li>
+<li>Digital Microprocessor Fundamentals</li>
+<li>Electronic Communications</li>
+<li>Electronic Systems Troubleshooting</li>
+<li>Radio/Radar Fundamentals</li>
+<li>Solid State Electronics</li>
+<li>Analog Circuits</li>
+<li>Communications Circuit Analysis</li>
+<li>Digital Circuit Logic</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">
@@ -181,11 +192,11 @@ wait
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = ".",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
@@ -253,3 +264,8 @@ wait
 
     </body>
 </html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2018-11-16 03:59:12
+-->
