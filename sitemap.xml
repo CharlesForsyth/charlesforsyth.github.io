@@ -28,6 +28,14 @@
     <url>
      <loc>None</loc>
      <lastmod>2018-11-15</lastmod>
+<<<<<<< HEAD
+=======
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>None</loc>
+     <lastmod>2018-11-15</lastmod>
+>>>>>>> 9cdb84e7c293b663f0f2b2cfdbf57d442b6c7f9c
      <changefreq>daily</changefreq>
     </url>
 </urlset>
