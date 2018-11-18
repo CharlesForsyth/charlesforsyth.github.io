@@ -146,11 +146,40 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#scripts">Scripts</a></li>
+            <li><a href="#bash">Bash</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-</div>
+<h1 id="scripts">Scripts</h1>
+<p>Scripts are just text files that contain commands you run with an interpreter.</p>
+<p>Common scripting languages:</p>
+<ul>
+<li>Perl</li>
+<li>Python</li>
+<li>Bash</li>
+<li>R</li>
+<li>Ruby</li>
+<li>Batch (windows)</li>
+<li>Power Shell (windows)</li>
+</ul>
+<h3 id="bash">Bash</h3>
+<p><a href="https://www.gnu.org/software/bash/">Bash</a> is mainly found in Linux and is the default shell in most versions.</p>
+<p>It can be used in windows through the use of:</p>
+<ul>
+<li><a href="https://www.cygwin.com/">cygwin</a></li>
+<li><a href="https://docs.docker.com/docker-for-windows/">Containers</a></li>
+<li><a href="https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/">Windows Subsystem for Linux</a></li>
+</ul>
+<h5 id="shebang">SHEBANG</h5>
+<p>The shebang <code>#!</code> followed by the path <code>/bin/bash -l</code> to the interpreter that will be use to execute the script. This needs to be first line of the script. </p>
+<pre><code class="bash">#!/bin/bash -l
+</code></pre>
+
+<p>You can also use a more portable version of this with <code>/usr/bin/env bash -l</code> .  <code>/usr/bin/env</code> is a application used to run the first <code>bash</code> found in your <code>PATH</code>. </p>
+<pre><code class="bash">#!/usr/bin/env bash -l
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
