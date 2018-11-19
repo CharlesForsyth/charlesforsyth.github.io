@@ -160,6 +160,30 @@
 <h1 id="hpc-software">HPC Software</h1>
 <h3 id="conda">Conda</h3>
 <p>This is one of the best package managers i have used. It has many uses in an HPC environment.</p>
+<h5 id="conda-list-environments">Conda list environments</h5>
+<pre><code class="bash">conda env list
+</code></pre>
+
+<h5 id="conda-create-new-environment-with-python-37">Conda - create new environment with python 3.7</h5>
+<pre><code class="bash">conda create -y -n python3.7 python=3.7
+</code></pre>
+
+<h5 id="conda-create-new-environment-with-python-37-and-install-jupyter">Conda - create new environment with python 3.7 and install jupyter.</h5>
+<pre><code class="bash">conda create -y -n jupyter python=3.7 jupyter
+</code></pre>
+
+<h5 id="conda-delete-environment">Conda - Delete environment</h5>
+<pre><code class="bash">conda env remove -y -n python3.7
+</code></pre>
+
+<h5 id="conda-enable-conda-environment">Conda - Enable conda environment</h5>
+<pre><code class="bash">source activate &lt;name-of-environment&gt;
+</code></pre>
+
+<h5 id="conda-disable-conda-environment">Conda - Disable conda environment</h5>
+<pre><code class="bash">source deactivate
+</code></pre>
+
 <h3 id="dask">DASK</h3>
 <p>For the python ecosystem, consider using <a href="http://dask.pydata.org/en/latest/">Dask</a> which provides advanced parallelism for analytics. <a href="http://dask.pydata.org/en/latest/why.html">Why use Dask</a> versus (or along with) other options? Dask integrates with Numpy, Pandas, and Scikit-Learn, and it also:</p>
 <ul>
