@@ -152,6 +152,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#hpc-software">HPC Software</a></li>
             <li><a href="#conda">Conda</a></li>
+            <li><a href="#jupyter-notebooks">Jupyter Notebooks</a></li>
             <li><a href="#dask">DASK</a></li>
     </ul>
 </div></div>
@@ -182,6 +183,17 @@
 
 <h5 id="conda-disable-conda-environment">Conda - Disable conda environment</h5>
 <pre><code class="bash">source deactivate
+</code></pre>
+
+<h3 id="jupyter-notebooks">Jupyter Notebooks</h3>
+<p>The <a href="http://jupyter.org/">Jupyter Notebook</a> is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more. </p>
+<p>This can be installed on your local laptop or workstation.</p>
+<p>These can also be used on many HPC Clusters which is exciting because there is often more software there and access to many more cpu and memory.</p>
+<h5 id="installing-jupyter-notebooks">Installing Jupyter Notebooks</h5>
+<p>If Anaconda is installed then Jupyter is all ready installed.</p>
+<p>If just conda is installed than run the following to install Juypter Notebooks.</p>
+<pre><code class="bash">conda create -y -n jupyter python=3.7 jupyter
+source activate jupyter
 </code></pre>
 
 <h3 id="dask">DASK</h3>
