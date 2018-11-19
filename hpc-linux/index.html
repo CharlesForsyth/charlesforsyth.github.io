@@ -188,6 +188,7 @@
             <li><a href="#wget">Wget</a></li>
             <li><a href="#scp">SCP</a></li>
             <li><a href="#nice-ftp">Nice FTP</a></li>
+            <li><a href="#ssh">SSH</a></li>
         <li class="main "><a href="#archiving-and-compressing">Archiving and Compressing</a></li>
             <li><a href="#creating-archives">Creating Archives</a></li>
             <li><a href="#viewing-archives">Viewing Archives</a></li>
@@ -918,6 +919,26 @@ ncftp&gt; open ftp.ncbi.nih.gov
 ncftp&gt; cd /blast/executables
 ncftp&gt; get blast.linux.tar.Z (skip extension: @)
 ncftp&gt; bye
+</code></pre>
+
+<h3 id="ssh">SSH</h3>
+<p>Main protocal used to open terminals on linux machine both local and remote.</p>
+<ul>
+<li>Basic syntax <code>ssh &lt;username&gt;@&lt;host&gt;</code>.</li>
+<li>If local and remote usernames are the same you can omit the username.</li>
+<li>The <code>-i</code> flag will allow you to use a specific ssh key while connecting
+<strong> Ssh keys can allow you to connect without the use of a password.
+</strong> The command <code>ssh-keygen</code> will allow you to create a new key file
+*** Entering blank password when prompted will configure password less keys for you.</li>
+</ul>
+<h4 id="ssh-tunneling">SSH Tunneling</h4>
+<p>This is used to tunnel some other communication traffic over the ssh connection.</p>
+<h4 id="example-ssh-tunnel">Example SSH Tunnel</h4>
+<pre><code class="bash">ssh -L 14420:localhost:14420 cluster.hpcc.ucr.edu
+</code></pre>
+
+<p>You can even keep tunneling if you like.</p>
+<pre><code class="bash">ssh  -L 14420:i18:14420 -N i18
 </code></pre>
 
 <h2 id="archiving-and-compressing">Archiving and Compressing</h2>
