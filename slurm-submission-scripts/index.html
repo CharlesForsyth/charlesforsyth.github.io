@@ -49,74 +49,29 @@
                             <li >
                                 <a href="..">Home</a>
                             </li>
-                            <li >
-                                <a href="../cv/">CV</a>
-                            </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">High Performance Computing <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../hpc-home/">Intro</a>
+    <a href="../hpc-aws/">HPC on AWS</a>
 </li>
                                     
 <li >
-    <a href="../hpc-linux/">Linux Basics</a>
+    <a href="../Code/">Code</a>
 </li>
-                                    
-<li >
-    <a href="../hpc-hardware/">Hardware</a>
-</li>
-                                    
-<li >
-    <a href="../hpc-provisioning/">Provisioning</a>
-</li>
-                                    
-<li >
-    <a href="../hpc-architecture/">Architecture</a>
-</li>
-                                    
-<li >
-    <a href="../hpc-schedulers/">Schedulers</a>
-</li>
-                                    
-<li >
-    <a href="../hpc-software/">Software</a>
-</li>
-                                    
-<li >
-    <a href="../hpc-scripts/">Scripts</a>
-</li>
-                                    
-<li >
-    <a href="../hpc-aws/">HPC in the Cloud</a>
-</li>
-                                    
-<li >
-    <a href="../hpc-monitoring/">Monitoring</a>
-</li>
-                                    
-<li >
-    <a href="../hpc-metrics/">Metrics</a>
-</li>
-                                    
-  <li class="dropdown-submenu">
-    <a href="#">Code</a>
-    <ul class="dropdown-menu">
-            
-<li class="active">
-    <a href="./">Slurm</a>
-</li>
-    </ul>
-  </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Docs <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
                                     
 <li >
     <a href="../presentations/">Presentations</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../project1/">Project 1</a>
 </li>
                                     
 <li >
@@ -132,16 +87,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="../hpc-metrics/">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li >
-                                <a rel="prev" href="../presentations/">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -157,17 +102,64 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="slurm">Slurm</h1>
-<p><em>Slurm</em> is a resource scheduler for HPC Clusters.</p>
-<p>Slurm submission scripts are how you ask for resources on the cluster and what to do with those resources once you get them.</p>
-<p>I have a collection of different examples I have used.
-Its stored on <a href="https://github.com/CharlesForsyth/slurm_scripts">GitHub - Charles Forsyth</a>.</p>
-<p>Select examples shown below.</p>
+<p>Slurm is a resource scheduler for HPC Clusters.</p>
+<p>Slurm submission scripts are how you ask for resources on the cluster and what todo with teh those resources once you get them.</p>
+<p>I have a collection of different examples I have used on github.
+<a href="https://github.com/CharlesForsyth/slurm_scripts">Link</a></p>
 <h2 id="spark-example">Spark Example</h2>
-<script src="https://gist.github.com/CharlesForsyth/6f1d1474f3dc7b5f0c1d836c0aa34911.js"></script>
+<pre><code class="bash">#!/bin/bash -l
 
-<script src="http://gist-it.appspot.com/github/CharlesForsyth/slurm_scripts/blob/master/spark_job.sh"></script>
+#SBATCH -p short
+#SBATCH --nodes=3
+#SBATCH --cpus-per-task=8
+#SBATCH --ntasks-per-node=1
+#SBATCH --time=0:20:00
+#SBATCH --job-name=spark-test
 
-<script src="http://gist-it.appspot.com/github/robertkrimen/gist-it-example/blob/master/example.js"></script></div>
+##########################################################
+# PBS version was pulled from here:                      #
+#   https://www.dursi.ca/post/spark-in-hpc-clusters.html #
+##########################################################
+
+nodes=($( scontrol show hostnames $SLURM_NODELIST ))
+nnodes=${#nodes[@]}
+last=$(( $nnodes - 1 ))
+
+cd $SLURM_WORKING_DIR
+
+export SPARK_HOME=/rhome/forsythc/bigdata/bin/spark
+ssh ${nodes[0]}.ib.int.bioinfo.ucr.edu &quot;module load java/8u45; cd ${SPARK_HOME}; ./sbin/start-master.sh&quot;
+sparkmaster=&quot;spark://${nodes[0]}:7077&quot;
+
+SCRATCH=/rhome/forsythc/bigdata/scratch/
+mkdir -p ${SCRATCH}/work
+rm -f ${SCRATCH}/work/nohup*.out
+
+for i in $( seq 0 $last ); do
+        ssh ${nodes[$i]}.ib.int.bioinfo.ucr.edu &quot;cd ${SPARK_HOME}; module load java/8u45; nohup ./bin/spark-class org.apache.spark.deploy.worker.Worker ${sparkmaster} &amp;&gt; ${SCRATCH}/work/nohup-${nodes[$i]}.out&quot; &amp;
+done
+
+rm -rf ${SCRATCH}/wordcounts
+
+cat &gt; sparkscript.py &lt;&lt;EOF
+from pyspark import SparkContext
+
+sc = SparkContext(appName=&quot;wordCount&quot;)
+file = sc.textFile(&quot;${SCRATCH}/moby-dick.txt&quot;)
+counts = file.flatMap(lambda line: line.split(&quot; &quot;)).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a+b)
+counts.saveAsTextFile(&quot;${SCRATCH}/wordcounts&quot;)
+EOF
+
+module load java/8u45
+${SPARK_HOME}/bin/spark-submit --master ${sparkmaster} sparkscript.py
+
+echo &quot;Tried to use host name ${nnodes[0]} maybe we should use ${nodes[0]}&quot;
+ssh ${nodes[0]}.ib.int.bioinfo.ucr.edu &quot;module load java/8u45; cd ${SPARK_HOME}; ./sbin/stop-master.sh&quot;
+for i in $( seq 0 $last ); do
+    ssh ${nodes[$i]}.ib.int.bioinfo.ucr.edu &quot;killall java&quot;
+    done
+wait
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
