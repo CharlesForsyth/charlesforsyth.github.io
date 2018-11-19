@@ -161,27 +161,27 @@
 <h1 id="hpc-software">HPC Software</h1>
 <h3 id="conda">Conda</h3>
 <p>This is one of the best package managers i have used. It has many uses in an HPC environment.</p>
-<h5 id="conda-list-environments">Conda list environments</h5>
+<h4 id="conda-list-environments">Conda list environments</h4>
 <pre><code class="bash">conda env list
 </code></pre>
 
-<h5 id="conda-create-new-environment-with-python-37">Conda - create new environment with python 3.7</h5>
+<h4 id="conda-create-new-environment-with-python-37">Conda - create new environment with python 3.7</h4>
 <pre><code class="bash">conda create -y -n python3.7 python=3.7
 </code></pre>
 
-<h5 id="conda-create-new-environment-with-python-37-and-install-jupyter">Conda - create new environment with python 3.7 and install jupyter.</h5>
+<h4 id="conda-create-new-environment-with-python-37-and-install-jupyter">Conda - create new environment with python 3.7 and install jupyter.</h4>
 <pre><code class="bash">conda create -y -n jupyter python=3.7 jupyter
 </code></pre>
 
-<h5 id="conda-delete-environment">Conda - Delete environment</h5>
+<h4 id="conda-delete-environment">Conda - Delete environment</h4>
 <pre><code class="bash">conda env remove -y -n python3.7
 </code></pre>
 
-<h5 id="conda-enable-conda-environment">Conda - Enable conda environment</h5>
+<h4 id="conda-enable-conda-environment">Conda - Enable conda environment</h4>
 <pre><code class="bash">source activate &lt;name-of-environment&gt;
 </code></pre>
 
-<h5 id="conda-disable-conda-environment">Conda - Disable conda environment</h5>
+<h4 id="conda-disable-conda-environment">Conda - Disable conda environment</h4>
 <pre><code class="bash">source deactivate
 </code></pre>
 
@@ -189,7 +189,7 @@
 <p>The <a href="http://jupyter.org/">Jupyter Notebook</a> is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more. </p>
 <p>This can be installed on your local laptop or workstation.</p>
 <p>These can also be used on many HPC Clusters which is exciting because there is often more software there and access to many more cpu and memory.</p>
-<h5 id="installing-jupyter-notebooks">Installing Jupyter Notebooks</h5>
+<h4 id="installing-jupyter-notebooks">Installing Jupyter Notebooks</h4>
 <p>If Anaconda is installed then Jupyter is all ready installed.</p>
 <p>If just conda is installed than run the following to install Juypter Notebooks.</p>
 <pre><code class="bash">conda create -y -n jupyter python=3.7 jupyter
