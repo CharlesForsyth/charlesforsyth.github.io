@@ -152,54 +152,32 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#introduction">Introduction</a></li>
             <li><a href="#gnulinux-distributions">GNU/Linux Distributions</a></li>
-        <li class="main "><a href="#basics">Basics</a></li>
-            <li><a href="#command-line-syntax-for-this-manual">Command-Line Syntax for this Manual</a></li>
-            <li><a href="#orientation">Orientation</a></li>
-            <li><a href="#files-and-directories">Files and directories</a></li>
-            <li><a href="#copy-and-paste">Copy and paste</a></li>
-            <li><a href="#handy-shortcuts">Handy shortcuts</a></li>
-            <li><a href="#other-useful-unix-commands">Other Useful Unix Commands</a></li>
-        <li class="main "><a href="#unix-help">Unix Help</a></li>
-        <li class="main "><a href="#finding-files-directories-and-applications">Finding files, directories and applications</a></li>
-        <li class="main "><a href="#finding-things-in-files">Finding things in files</a></li>
-        <li class="main "><a href="#ownership-overview">Ownership Overview</a></li>
-        <li class="main "><a href="#ownership-levels">Ownership Levels</a></li>
-        <li class="main "><a href="#permission-bits">Permission Bits</a></li>
-        <li class="main "><a href="#checking-permissions">Checking Permissions</a></li>
-        <li class="main "><a href="#change-ownership">Change ownership</a></li>
-        <li class="main "><a href="#process-management">Process Management</a></li>
-            <li><a href="#more-on-terminating-processes">More on Terminating Processes</a></li>
-        <li class="main "><a href="#vim-manual">Vim Manual</a></li>
-            <li><a href="#basics_1">Basics</a></li>
-            <li><a href="#vim-help">Vim Help</a></li>
-        <li class="main "><a href="#text-viewing">Text Viewing</a></li>
-        <li class="main "><a href="#text-editors">Text Editors</a></li>
-        <li class="main "><a href="#the-unix-shell">The Unix Shell</a></li>
-            <li><a href="#stdin-stdout-stderr-redirections-and-wildcards">STDIN, STDOUT, STDERR, Redirections, and Wildcards</a></li>
-            <li><a href="#useful-shell-commands">Useful shell commands</a></li>
-        <li class="main "><a href="#screen">Screen</a></li>
-            <li><a href="#starting-a-new-screen-session">Starting a New Screen Session</a></li>
-            <li><a href="#attaching-to-screen-sessions">Attaching to Screen Sessions</a></li>
-            <li><a href="#destroying-screen-sessions">Destroying Screen Sessions</a></li>
-            <li><a href="#tabs-and-a-reasonably-large-history-buffer">Tabs and a Reasonably Large History Buffer</a></li>
-        <li class="main "><a href="#simple-one-liner-shell-scripts">Simple One-Liner Shell Scripts</a></li>
-        <li class="main "><a href="#simple-one-liner-perl-scripts">Simple One-Liner Perl Scripts</a></li>
-        <li class="main "><a href="#remote-copy-wget-scp-ncftp">Remote Copy: wget, scp, ncftp</a></li>
-            <li><a href="#wget">Wget</a></li>
-            <li><a href="#scp">SCP</a></li>
-            <li><a href="#nice-ftp">Nice FTP</a></li>
-        <li class="main "><a href="#archiving-and-compressing">Archiving and Compressing</a></li>
-            <li><a href="#creating-archives">Creating Archives</a></li>
-            <li><a href="#viewing-archives">Viewing Archives</a></li>
-            <li><a href="#extracting-archives">Extracting Archives</a></li>
-        <li class="main "><a href="#environment-variables">Environment Variables</a></li>
+            <li><a href="#basics">Basics</a></li>
+            <li><a href="#finding-files-directories-and-applications">Finding files, directories and applications</a></li>
+            <li><a href="#finding-things-in-files">Finding things in files</a></li>
+            <li><a href="#ownership-overview">Ownership Overview</a></li>
+            <li><a href="#ownership-levels">Ownership Levels</a></li>
+            <li><a href="#permission-bits">Permission Bits</a></li>
+            <li><a href="#checking-permissions">Checking Permissions</a></li>
+            <li><a href="#change-ownership">Change ownership</a></li>
+            <li><a href="#process-management">Process Management</a></li>
+            <li><a href="#vim-manual">Vim Manual</a></li>
+            <li><a href="#text-viewing">Text Viewing</a></li>
+            <li><a href="#text-editors">Text Editors</a></li>
+            <li><a href="#the-unix-shell">The Unix Shell</a></li>
+            <li><a href="#screen">Screen</a></li>
+            <li><a href="#simple-one-liner-shell-scripts">Simple One-Liner Shell Scripts</a></li>
+            <li><a href="#simple-one-liner-perl-scripts">Simple One-Liner Perl Scripts</a></li>
+            <li><a href="#remote-copy-wget-scp-ncftp">Remote Copy: wget, scp, ncftp</a></li>
+            <li><a href="#archiving-and-compressing">Archiving and Compressing</a></li>
+            <li><a href="#environment-variables">Environment Variables</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h2 id="introduction">Introduction</h2>
+<h1 id="introduction">Introduction</h1>
 <p>Linux used as the operating system for most super computers.</p>
-<h3 id="gnulinux-distributions">GNU/Linux Distributions</h3>
+<h4 id="gnulinux-distributions">GNU/Linux Distributions</h4>
 <ul>
 <li><a href="https://www.ubuntu.com/">Ubuntu</a> - A beginner-friendly Linux OS based on Debian. A good choice for most people.</li>
 <li><a href="https://www.opensuse.org/">OpenSuSE</a> - An alternative to Ubuntu for new users.</li>
@@ -211,14 +189,14 @@
 </ul>
 <p><a href="https://upload.wikimedia.org/wikipedia/commons/1/1b/Linux_Distribution_Timeline.svg">Family tree of the GNU/Linux distributions</a></p>
 <h2 id="basics">Basics</h2>
-<h3 id="command-line-syntax-for-this-manual">Command-Line Syntax for this Manual</h3>
+<h4 id="command-line-syntax-for-this-manual">Command-Line Syntax for this Manual</h4>
 <ul>
 <li>Remember the UNIX/Linux command line is case sensitive!</li>
 <li>All commands in this manual are printed in gray code boxes.</li>
 <li>The hash (pound) sign "#" indicates end of a command and the start of a comment.</li>
 <li>The notation &lt;...&gt; refers to variables and file names that need to be specified by the user. The symbols &lt; and &gt; need to be excluded.</li>
 </ul>
-<h3 id="orientation">Orientation</h3>
+<h4 id="orientation">Orientation</h4>
 <p>Viewing and changing the present working directory:</p>
 <pre><code class="bash">pwd               # &quot;Print working directory&quot;; show your current path
 
@@ -250,7 +228,7 @@ whoami            # Shows your user name (same as &quot;echo $USER&quot;)
 hostname          # Shows on which machine you are (same as &quot;echo $HOSTNAME&quot;)
 </code></pre>
 
-<h3 id="files-and-directories">Files and directories</h3>
+<h4 id="files-and-directories">Files and directories</h4>
 <pre><code class="bash">mkdir &lt;dir_name&gt;   # Creates specified directory
 rmdir &lt;dir_name&gt;   # Removes empty directory
 rm &lt;file_name&gt;     # Removes file_name
@@ -261,7 +239,7 @@ mv &lt;name1&gt; &lt;name2&gt; # Renames directories or files
 mv &lt;name&gt; &lt;path&gt;   # Moves file/directory as specified in path
 </code></pre>
 
-<h3 id="copy-and-paste">Copy and paste</h3>
+<h4 id="copy-and-paste">Copy and paste</h4>
 <p>The methods differ depending where you are.</p>
 <ul>
 <li>In a <strong>command line</strong> environment:</li>
@@ -296,7 +274,7 @@ mv &lt;name&gt; &lt;path&gt;   # Moves file/directory as specified in path
 </ul>
 </li>
 </ul>
-<h3 id="handy-shortcuts">Handy shortcuts</h3>
+<h4 id="handy-shortcuts">Handy shortcuts</h4>
 <ul>
 <li>At the command prompt:</li>
 <li>up(down)_key                 - scrolls through command history</li>
@@ -317,7 +295,7 @@ Ctrl+y    # Paste ("yank") content that was cut earlier (by Ctrl-w or Ctrl-k)</c
   * "." (dot)            - refers to the present working directory
   * "~" (tilde) or "~/"  - refers to user's home directory</p>
 </blockquote>
-<h3 id="other-useful-unix-commands">Other Useful Unix Commands</h3>
+<h4 id="other-useful-unix-commands">Other Useful Unix Commands</h4>
 <pre><code class="bash">df          # disk space
 free -g     # memory info in Megabytes
 uname -a    # shows tech info about machine
@@ -330,7 +308,7 @@ du -sh *    # displays disk space usage of individual files/directories
 du -s * | sort -nr # shows disk space used by different directories/files sorted by size
 </code></pre>
 
-<h2 id="unix-help">Unix Help</h2>
+<h4 id="unix-help">Unix Help</h4>
 <pre><code class="bash">help &lt;command&gt;  # Show help for a Bash command
 man &lt;something&gt; # Show the manual page for a program (press the 'q' key to exit) 
 man wc          # Manual on program 'word count' wc
@@ -495,10 +473,10 @@ nice -n &lt;nice_value&gt; &lt;cmd&gt; # Run a program with lower priority. Be n
 renice -n &lt;priority_value&gt; &lt;process-ID&gt; # Changes the priority of an existing process.
 </code></pre>
 
-<h3 id="more-on-terminating-processes">More on Terminating Processes</h3>
+<h4 id="more-on-terminating-processes">More on Terminating Processes</h4>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-use-ps-kill-and-nice-to-manage-processes-in-linux">DigitalOcean - How To Use ps, kill, and nice to Manage Processes in Linux</a></p>
 <h2 id="vim-manual">Vim Manual</h2>
-<h3 id="basics_1">Basics</h3>
+<h4 id="basics_1">Basics</h4>
 <p><code>vim &lt;my_file_name&gt; # open/create file with vim</code></p>
 <p>Once you are in Vim the most important commands are <code>i</code> ,  <code>:</code>  and <code>ESC</code>. The <code>i</code> key brings you into the insert mode for typing. <code>ESC</code> brings you out of there. And the <code>:</code> key starts the command mode at the bottom of the screen. In the following text, all commands starting with <code>:</code> need to be typed in the command mode. All other commands are typed in the normal mode after hitting the <code>ESC</code> key.</p>
 <p><strong>Modifier Keys to Control Vim</strong></p>
@@ -517,7 +495,7 @@ q:  # history of commands (from NORMAL MODE!), to reexecute one of them, select 
 :#                  # go to specified line number
 </code></pre>
 
-<h3 id="vim-help">Vim Help</h3>
+<h4 id="vim-help">Vim Help</h4>
 <ul>
 <li><strong>Online Help</strong></li>
 <li>Find help on the web. Google will find answers to most questions on <strong>vi</strong> and <strong>vim</strong> (try searching for both terms).</li>
@@ -740,7 +718,7 @@ chsh -l # gives list of shell programs available on your system (does not work o
 &lt;shell_name&gt; # switches to different shell
 </code></pre>
 
-<h3 id="stdin-stdout-stderr-redirections-and-wildcards">STDIN, STDOUT, STDERR, Redirections, and Wildcards</h3>
+<h4 id="stdin-stdout-stderr-redirections-and-wildcards">STDIN, STDOUT, STDERR, Redirections, and Wildcards</h4>
 <p>See <a href="http://www.tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-3.html">LINUX HOWTOs</a></p>
 <p>By default, UNIX commands read from standard input (STDIN) and send their output to standard out (STDOUT).</p>
 <p>You can redirect them by using the following commands:</p>
@@ -756,7 +734,7 @@ grep my_pattern my_file | wc     # Pipes (|) output of 'grep' into 'wc'
 grep my_pattern my_non_existing_file 2 &gt; my_stderr # prints STDERR to file
 </code></pre>
 
-<h3 id="useful-shell-commands">Useful shell commands</h3>
+<h4 id="useful-shell-commands">Useful shell commands</h4>
 <pre><code class="bash">cat &lt;file1&gt; &lt;file2&gt; &gt; &lt;cat.out&gt;      # concatenate files in output file 'cat.out'
 paste &lt;file1&gt; &lt;file2&gt; &gt; &lt;paste.out&gt;  # merges lines of files and separates them by tabs (useful for tables)
 cmp &lt;file1&gt; &lt;file2&gt;                  # tells you whether two files are identical
@@ -795,7 +773,7 @@ egrep                                # see chapter 4
 <li><a href="http://fosswire.com/post/2008/08/video-tutorial-getting-started-with-gnu-screen/">Screen Turorial</a></li>
 <li><a href="http://aperiodic.net/screen/quick_reference">Screen Cheat Sheet</a></li>
 </ol>
-<h3 id="starting-a-new-screen-session">Starting a New Screen Session</h3>
+<h4 id="starting-a-new-screen-session">Starting a New Screen Session</h4>
 <pre><code class="bash">screen                 # Start a new session
 screen -S &lt;some-name&gt;  # Start a new session and gives it a name
 </code></pre>
@@ -810,7 +788,7 @@ Ctrl-d or type exit # Exit out of the current window. Exiting form the last wind
 Ctrl-a [ # Enters the scrolling mode. Use Page Up and Page Down keys to scroll through the window. Hit the Enter key twice to return to normal mode. 
 </code></pre>
 
-<h3 id="attaching-to-screen-sessions">Attaching to Screen Sessions</h3>
+<h4 id="attaching-to-screen-sessions">Attaching to Screen Sessions</h4>
 <p>From any computer, you can attach to a screen session after SSH-ing into a server.</p>
 <pre><code class="bash">screen -r              # Attaches to an existing session, if there is only one
 screen -r              # Lists available sessions and their names, if there are more then one session running
@@ -819,14 +797,14 @@ screen -r &lt;first-few-letters-of-name&gt; # Type just the first few letters of
                        # and you will be attached to the session you need
 </code></pre>
 
-<h3 id="destroying-screen-sessions">Destroying Screen Sessions</h3>
+<h4 id="destroying-screen-sessions">Destroying Screen Sessions</h4>
 <ol>
 <li>Terminate all programs that are running in the screen session. The standard way to do that is: <code>Ctrl-c</code></li>
 <li>Exit out of your shell: <code>exit</code></li>
 <li>Repeat steps 1 and 2 until you see the message: <code>[screen is terminating]</code></li>
 </ol>
 <p>There may be programs running in different windows of the same screen session. That's why you may need to terminate programs and exit shells multiple time.</p>
-<h3 id="tabs-and-a-reasonably-large-history-buffer">Tabs and a Reasonably Large History Buffer</h3>
+<h4 id="tabs-and-a-reasonably-large-history-buffer">Tabs and a Reasonably Large History Buffer</h4>
 <p>For a better experience with screen, run</p>
 <pre><code class="bash">cp ~/.screenrc ~/.screenrc.backup 2&gt; /dev/null
 echo 'startup_message off
@@ -889,12 +867,12 @@ for j in 0 1 2 3 4 5 6 7 8 9; do grep -iH &lt;my_pattern&gt; *$j.seq; done
 </code></pre>
 
 <h2 id="remote-copy-wget-scp-ncftp">Remote Copy: wget, scp, ncftp</h2>
-<h3 id="wget">Wget</h3>
+<h4 id="wget">Wget</h4>
 <p>Use wget to download a file from the web:</p>
 <pre><code class="bash">wget ftp://ftp.ncbi.nih.... # file download from www; add option '-r' to download entire directories
 </code></pre>
 
-<h3 id="scp">SCP</h3>
+<h4 id="scp">SCP</h4>
 <p>Use scp to copy files between machines (ie. laptop to server):</p>
 <pre><code class="bash">scp source target # Use form 'userid@machine_name' if your local and remote user ids are different.
                   # If they are the same you can use only 'machine_name'.
@@ -911,7 +889,7 @@ scp -r user@remote_host:directory/ ~/dir
                                  # Copies entire directory from server to local machine.
 </code></pre>
 
-<h3 id="nice-ftp">Nice FTP</h3>
+<h4 id="nice-ftp">Nice FTP</h4>
 <p>From the linux command line run ncftp and use it to get files:</p>
 <pre><code class="bash">ncftp
 ncftp&gt; open ftp.ncbi.nih.gov
@@ -921,7 +899,7 @@ ncftp&gt; bye
 </code></pre>
 
 <h2 id="archiving-and-compressing">Archiving and Compressing</h2>
-<h3 id="creating-archives">Creating Archives</h3>
+<h4 id="creating-archives">Creating Archives</h4>
 <pre><code class="bash">tar -cvf my_file.tar mydir/    # Builds tar archive of files or directories. For directories, execute command in parent directory. Don't use absolute path.    
 tar -czvf my_file.tgz mydir/   # Builds tar archive with compression of files or directories. For
                                # directories, execute command in parent directory. Don't use absolute path.
@@ -929,12 +907,12 @@ zip -r mydir.zip mydir/        # Command to archive a directory (here mydir) wit
 tar -jcvf mydir.tar.bz2 mydir/ # Creates *.tar.bz2 archive
 </code></pre>
 
-<h3 id="viewing-archives">Viewing Archives</h3>
+<h4 id="viewing-archives">Viewing Archives</h4>
 <pre><code class="bash">tar -tvf my_file.tar
 tar -tzvf my_file.tgz
 </code></pre>
 
-<h3 id="extracting-archives">Extracting Archives</h3>
+<h4 id="extracting-archives">Extracting Archives</h4>
 <pre><code class="bash">tar -xvf my_file.tar
 tar -xzvf my_file.tgz
 gunzip my_file.tar.gz # or unzip my_file.zip, uncompress my_file.Z,
