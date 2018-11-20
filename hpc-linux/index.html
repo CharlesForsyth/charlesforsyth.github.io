@@ -278,25 +278,29 @@ mv &lt;name&gt; &lt;path&gt;   # Moves file/directory as specified in path
 </ul>
 <h4 id="handy-shortcuts">Handy shortcuts</h4>
 <ul>
-<li>At the command prompt:</li>
+<li>At the command prompt:<ul>
 <li>up(down)_key                 - scrolls through command history</li>
-<li><code>history   # shows all commands you have used recently</code></li>
-<li>Auto Completion:</li>
+<li><code>history</code> shows all commands you have used recently</li>
+</ul>
+</li>
+<li>Auto Completion:<ul>
 <li><something-incomplete> TAB   - completes program_path/file_name</li>
 <li>Taking control over the cursor (the pointer on the command line):</li>
-<li></li>
 </ul>
-<blockquote>
-<p><code>bash
-Ctrl+a    # Cursor to beginning of command line
+</li>
+</ul>
+<pre><code class="bash">Ctrl+a    # Cursor to beginning of command line
 Ctrl+e    # Cursor to end of command line
 Ctrl+w    # Cut last word
 Ctrl+k    # Cut to the end of the line
-Ctrl+y    # Paste ("yank") content that was cut earlier (by Ctrl-w or Ctrl-k)</code>
-* When specifying file names:
-  * "." (dot)            - refers to the present working directory
-  * "~" (tilde) or "~/"  - refers to user's home directory</p>
-</blockquote>
+Ctrl+y    # Paste (&quot;yank&quot;) content that was cut earlier (by Ctrl-w or Ctrl-k)
+</code></pre>
+
+<ul>
+<li>When specifying file names:</li>
+<li><code>.</code> (dot)            - refers to the present working directory</li>
+<li><code>~</code> (tilde) or <code>~/</code>  - refers to user's home directory</li>
+</ul>
 <h4 id="other-useful-unix-commands">Other Useful Unix Commands</h4>
 <pre><code class="bash">df          # disk space
 free -g     # memory info in Megabytes
