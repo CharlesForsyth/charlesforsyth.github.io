@@ -168,6 +168,7 @@
             <li><a href="#screen">Screen</a></li>
             <li><a href="#simple-one-liner-shell-scripts">Simple One-Liner Shell Scripts</a></li>
             <li><a href="#simple-one-liner-perl-scripts">Simple One-Liner Perl Scripts</a></li>
+            <li><a href="#ssh">SSH</a></li>
             <li><a href="#remote-copy-wget-scp-ncftp">Remote Copy: wget, scp, ncftp</a></li>
             <li><a href="#archiving-and-compressing">Archiving and Compressing</a></li>
             <li><a href="#environment-variables">Environment Variables</a></li>
@@ -864,6 +865,41 @@ for j in 0 1 2 3 4 5 6 7 8 9; do grep -iH &lt;my_pattern&gt; *$j.seq; done
             # Parses lines that contain pattern1 and pattern2.
             # The following lines after the pattern can be specified in '$c=1' and '$d=1'.
             # For logical OR use this syntax: '/(pattern1|pattern2)/'.
+</code></pre>
+
+<h2 id="ssh">SSH</h2>
+<p>SSH is the main protocal used to communicate with or establish a terminal on remote systems.</p>
+<h4 id="example">Example</h4>
+<pre><code class="bash">ssh &lt;username&gt;@&lt;remote-address&gt;
+</code></pre>
+
+<p>If you want to use a specific ssh key for this connection use the <code>-i</code> flag.</p>
+<pre><code class="bash">ssh -i ~/.ssh/mykey &lt;username&gt;@&lt;remote-address&gt;
+</code></pre>
+
+<p>If your username on the remote system is the same as your local username then you can omit the username from the command.</p>
+<h4 id="passwordless-login">Passwordless login.</h4>
+<p>You can use ssh (RSA) keys to login with out the need for a password. (this is much quicker and very useful)</p>
+<ul>
+<li>Generate your ssh keys <code>ssh-keygen</code></li>
+<li>Enter a blank password when asked in order to have a passwordless key</li>
+<li>By default the key will be stored as <code>.ssh/id_rsa</code><ul>
+<li>You can change this path to which ever you like</li>
+</ul>
+</li>
+<li>Copy the public key to the remote system (there is now a tool for this)</li>
+<li><code>ssh-copy-id &lt;username&gt;@&lt;remote-system&gt;</code></li>
+<li>You can pass the <code>-i</code> flag to this command to copy a specific public key.</li>
+<li>This places your public key into the the file <code>.ssh/authorized_keys</code> on the remote system.</li>
+<li>You can do this manually if you like.</li>
+</ul>
+<p>Once this is complete you can login without a password.</p>
+<h4 id="ssh-remote-commands">SSH remote commands</h4>
+<p>Often you may want to just run a command on the remote system.</p>
+<p>Just put the command or muplitple commands surounded by quotes after the ssh command </p>
+<pre><code class="bash">ssh &lt;username&gt;@&lt;remote-host&gt; &lt;command-you-want-to-run&gt;
+
+ssh &lt;username&gt;@&lt;remote-host&gt; &quot;&lt;command-you-want-to-run&gt;; &lt;command-you-want-to-run&gt;; &lt;command-you-want-to-run&gt;&quot;
 </code></pre>
 
 <h2 id="remote-copy-wget-scp-ncftp">Remote Copy: wget, scp, ncftp</h2>
