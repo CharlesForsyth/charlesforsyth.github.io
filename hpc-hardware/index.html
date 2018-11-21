@@ -356,16 +356,12 @@ Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
 </li>
 <li>
 <p>Check memory on the node</p>
-<ul>
-<li>
 <p><code>cat /proc/meminfo | head -3</code> </p>
 <p><code>bash
 i22:~# cat /proc/meminfo | head -3
 MemTotal:       528079828 kB
 MemFree:        495977976 kB
 MemAvailable:   502751960 kB</code></p>
-</li>
-<li>
 <p><code>free -g</code> </p>
 <p>```bash
 i22:~# free -g
@@ -373,8 +369,6 @@ i22:~# free -g
 Mem:            503          31         461           1          10         467
 Swap:             3           0           3</p>
 <p>```</p>
-</li>
-<li>
 <p>smem</p>
 <ul>
 <li>
@@ -385,14 +379,16 @@ Swap:             3           0           3</p>
 <ul>
 <li>
 <p><code>smem -w</code>  </p>
+</li>
+<li>
 <p><code>bash
-i22:~# smem -w
-Area                           Used      Cache   Noncache 
-firmware/hardware                 0          0          0 
-kernel image                      0          0          0 
-kernel dynamic memory      14962228    7805104    7157124 
-userspace memory           17016380    1589884   15426496 
-free memory               496101220  496101220          0</code></p>
+    i22:~# smem -w
+    Area                           Used      Cache   Noncache 
+    firmware/hardware                 0          0          0 
+    kernel image                      0          0          0 
+    kernel dynamic memory      14962228    7805104    7157124 
+    userspace memory           17016380    1589884   15426496 
+    free memory               496101220  496101220          0</code></p>
 </li>
 <li>
 <p><a href="https://www.techrepublic.com/article/how-to-install-and-use-the-smem-memory-reporting-tool-in-linux/">other examples</a></p>
@@ -400,8 +396,6 @@ free memory               496101220  496101220          0</code></p>
 </ul>
 </li>
 <li></li>
-</ul>
-</li>
 </ul>
 </li>
 <li>
