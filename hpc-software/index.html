@@ -311,6 +311,30 @@ int main(int argc, char *argv[])
 }
 </code></pre>
 
+<p>hellompi.c</p>
+<p><code>mpicc hellompi.c -I/opt/linux/centos/7.x/x86_64/pkgs/openmpi/2.0.1-slurm-16.05.4/include -pthread -o hellompi</code></p>
+<pre><code class="c++">#include &lt;stdio.h&gt;
+#include &lt;mpi.h&gt;
+#include &lt;unistd.h&gt;
+
+
+int main (argc, argv)
+int argc;
+char *argv[];
+{
+int rank, size;
+char hostname[1024];
+
+MPI_Init (&amp;argc, &amp;argv); /* starts MPI */
+MPI_Comm_rank (MPI_COMM_WORLD, &amp;rank); /* get current process id */
+MPI_Comm_size (MPI_COMM_WORLD, &amp;size); /* get number of processes */
+gethostname(hostname, 1024);
+printf( &quot;Hello world from process %d of %d on Node %s\n&quot;, rank, size, hostname );
+MPI_Finalize();
+return 0;
+}
+</code></pre>
+
 <h2 id="fortran">Fortran</h2>
 <h6 id="worksharef90">workshare.f90</h6>
 <pre><code class="fortran">        program worksharef90
