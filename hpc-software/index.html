@@ -149,6 +149,7 @@
             <li><a href="#jupyter-notebooks">Jupyter Notebooks</a></li>
             <li><a href="#dask">DASK</a></li>
             <li><a href="#gemma">Gemma</a></li>
+            <li><a href="#rsd">RSD</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -232,6 +233,28 @@ gzip -d gemma-0.98.1-linux-static.gz
 chmod 755 gemma-0.98.1-linux-static
 ./gemma-0.98.1-linux-static
 cp ./gemma-0.98.1-linux-static &lt;someplace&gt; (if you want to)
+</code></pre>
+
+<h3 id="rsd">RSD</h3>
+<p>Create a conda environment with your own version of python then load the prerequisite packagea and run the installer.
+Commands:</p>
+<pre><code class="bash">conda create -n rsd python=2.7.14
+source activate rsd
+module load ncbi-blast
+module load paml
+module load kalign
+git clone https://github.com/todddeluca/reciprocal_smallest_distance
+cd reciprocal_smallest_distance
+python setup.py install
+rsd_search -h
+</code></pre>
+
+<p>Then on subsequent logins or shells run the following to load up your RSD install.</p>
+<pre><code class="bash">source activate rsd
+module load ncbi-blast
+module load paml
+module load kalign
+rsd_search -h
 </code></pre></div>
         </div>
 
