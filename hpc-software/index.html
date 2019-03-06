@@ -150,6 +150,7 @@
             <li><a href="#dask">DASK</a></li>
             <li><a href="#gemma">Gemma</a></li>
             <li><a href="#rsd">RSD</a></li>
+            <li><a href="#matplotlib">Matplotlib</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -256,6 +257,27 @@ module load ncbi-blast
 module load paml
 module load kalign
 rsd_search -h
+</code></pre>
+
+<h3 id="matplotlib">Matplotlib</h3>
+<p>This is a plotting package for python.</p>
+<p>Install can be done through conda.</p>
+<pre><code class="bash">conda create -n matplolib python=2.7.14 matplotlib
+source activate matplotlib
+</code></pre>
+
+<p>When the system runs the sbatch job it spawns a new session and this session is not connected to your login session with the -XY.
+This sbatch job doesn't have a $DISPLAY environment.
+You can make some minor adjustments to your python code to use the Agg backend and this will allow you to not use a $DISPLAY and still save plots.</p>
+<p>Example:</p>
+<pre><code class="python">import matplotlib as mpl
+mpl.use('Agg')
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(range(10))
+fig.savefig('temp.png')
 </code></pre></div>
         </div>
 
