@@ -151,6 +151,7 @@
             <li><a href="#gemma">Gemma</a></li>
             <li><a href="#rsd">RSD</a></li>
             <li><a href="#matplotlib">Matplotlib</a></li>
+            <li><a href="#mothur">Mothur</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -278,6 +279,17 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(range(10))
 fig.savefig('temp.png')
+</code></pre>
+
+<h3 id="mothur">Mothur</h3>
+<p><a href="https://www.mothur.org/">Mothur website</a></p>
+<p>The latest release comes as binary so no need to compile or anything.
+Just download and unpack the binary.</p>
+<p>Example:</p>
+<pre><code class="bash">wget https://github.com/mothur/mothur/releases/download/v1.41.3/Mothur.linux_64.zip
+unzip Mothur.linux_64.zip
+cd mothur/
+./mothur -h
 </code></pre></div>
         </div>
 
